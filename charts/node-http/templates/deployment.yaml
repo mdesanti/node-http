@@ -21,6 +21,9 @@ spec:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: TEST_VARIABLE
+          value: {{ .Values.node-http.testVariabble }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:

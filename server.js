@@ -10,6 +10,7 @@ var server = http.createServer(function(req, resp){
 		}
 		else{
 			resp.writeHead(200, {'Content-Type': 'text/html'});
+			fileContent.replace('#variable', process.env.TEST_VARIABLE)
 			resp.write(fileContent);
 			resp.end();
 		}
@@ -17,5 +18,3 @@ var server = http.createServer(function(req, resp){
 });
 
 server.listen(8080);
-
-
