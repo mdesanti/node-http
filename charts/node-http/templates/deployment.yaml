@@ -24,6 +24,16 @@ spec:
         env:
         - name: TEST_VARIABLE
           value: {{ .Values.nodeHttp.testVariabble }}
+        - name: DB_USERNAME
+          value: {{ .Values.nodeHttp.dbUsername }}
+        - name: DB_PASSWORD
+          value: {{ .Values.nodeHttp.dbPassword }}
+        - name: DB_HOST
+          value: {{ .Values.nodeHttp.dbHost }}
+        - name: DB_PORT
+          value: {{ .Values.nodeHttp.dbPort }}
+        - name: DB_NAME
+          value: {{ .Values.nodeHttp.dbName }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
