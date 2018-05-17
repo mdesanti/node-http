@@ -11,8 +11,12 @@ var server = http.createServer(function(req, resp){
 	var databaseName = process.env.DB_NAME
 	var conString = `postgres://${username}:${password}@${host}:${port}/${databaseName}`;
 
-	var client = new pg.Client(conString);
-	client.connect();
+	try {
+		var client = new pg.Client(conString);
+		client.connect();
+	} catch(err) {
+		console.log(err);
+	}
 
 	fileSystem.readFile('./index.html', function(error, fileContent){
 		if(error){
